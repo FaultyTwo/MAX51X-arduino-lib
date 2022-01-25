@@ -1,8 +1,110 @@
-# Name
-i suck at github md
+# MAX51X
+An Arduino library for MAX517/MAX518/MAX519, 8-bit DAC I2C with R2R Outputs
 
-## About
-stuff
+## Overview
+MAX51X is a complete Arduino library for MAX517/MAX518/MAX519.
+
+Differences between each devices:<br>
+- MAX517: Only has 1 DAC, reference voltage can be adjusted.
+- MAX518: Have 2 DACs, reference voltage is the same as supply voltage for the device.
+- MAX519: Have 2 DACs, both reference voltage can be adjusted to each own DACs.
+
+## Analog Output
+Analog output can be calculated by using the follow formula:
+
+*+Vref \* (dac_content/256)* <br>
+Where dac_content -> value between 0 - 255 (unsigned 1 byte range)
+
+## How To Use The Library
+Include the library, then simply create an object according to each device numbers like this:
+```C
+#include <MAX51X.h>
+MAX517 dvc517(0x2F);
+MAX518 dvc518(0x2C);
+MAX519 dvc519(0x27);
+```
+
+To use this with the other I2C ports, you can simply type in the number of those pins like this:
+```C
+// ESP32
+#define I2C_SDA 33
+#define I2C_SCL 32
+
+MAX518 dvc518(0x2C,I2C_SDA,I2C_SCL,*clock rate*);
+```
 
 # Methods
-methods
+```C
+void setDac(bool dac, uint8_t data); // FOR MAX518/MAX519
+void setDac(uint8_t data); // FOR MAX517
+```
+Set a DAC output.
+
+For MAX518/MAX519:<br>
+logic 0 chooses DAC0, and logic 1 chooses DAC1.
+
+```C
+void setBothDac(uint8_t dac0, uint8_t dac1) // FOR MAX518/MAX519
+```
+Set both DAC outputs with respective values at the same time.
+
+**^Limit to MAX518/519, and is considered as error when invoked with MAX517 class.
+
+```C
+void powerOff(bool dac); // FOR MAX518/MAX519
+void powerOff(); // FOR MAX517
+```
+Powers down a DAC.
+
+For MAX518/MAX519:<br>
+logic 0 chooses DAC0, and logic 1 chooses DAC1.
+
+```C
+void powerOff(bool dac, uint8_t data); // FOR MAX518/MAX519
+void powerOff(uint8_t data);; // FOR MAX517
+```
+Powers down a DAC, and set an analog output voltage when turned on.
+
+For MAX518/MAX519:<br>
+logic 0 chooses DAC0, and logic 1 chooses DAC1.
+
+```C
+void powerOffBoth(); // FOR MAX518/MAX519
+```
+Power down both DACs at the same time.
+
+**^Limit to MAX518/519, and is considered as error when invoked with MAX517 class.
+
+```C
+void powerOn(bool dac); // FOR MAX518/MAX519
+void powerOn(); // FOR MAX517
+```
+Power on a DAC.
+
+For MAX518/MAX519:<br>
+logic 0 chooses DAC0, and logic 1 chooses DAC1.
+
+```C
+void powerOnBoth(); // FOR MAX518/MAX519
+```
+Power on both DACs at the same time.
+
+**^Limit to MAX518/519, and is considered as error when invoked with MAX517 class.
+
+```C
+void resetDac(bool dac); // FOR MAX518/MAX519
+void resetDac(); // FOR MAX517
+```
+Reset an output of a DAC to zero.
+
+For MAX518/MAX519:<br>
+logic 0 chooses DAC0, and logic 1 chooses DAC1.
+
+**^Doesn't with DAC1 in MAX518/MAX519 for a strange reason.
+
+```C
+void resetBothDac(); // FOR MAX518/MAX519
+```
+Reset both outputs of DACs.
+
+**^Limit to MAX518/519, and is considered as error when invoked with MAX517 class.

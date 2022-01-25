@@ -35,6 +35,8 @@ class MAX517: public MAX51X{
     void setDac(uint8_t data);
     void resetDac();
     void powerOff();
+	void powerOff(uint8_t data);
+	void powerOn();
     // DON'T EVEN TRY TO ACCESS THEM THRU BASE VERSION
     void resetBothDac() = delete;
     void setBothDac() = delete;

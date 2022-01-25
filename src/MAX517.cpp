@@ -25,3 +25,16 @@ void MAX517::powerOff(){
   _wire->write(0x08);
   _wire->endTransmission();
 }
+
+void MAX517::powerOff(uint8_t data){
+  _wire->beginTransmission(_adr);
+  _wire->write(0x08);
+  _wire->write(data);
+  _wire->endTransmission();
+}
+
+void MAX517::powerOn(){
+  _wire->beginTransmission(_adr);
+  _wire->write(0x00);
+  _wire->endTransmission();
+}
