@@ -63,7 +63,7 @@ void setBothDac(uint8_t dac0, uint8_t dac1); // FOR MAX518/MAX519
 ```
 Set both DAC outputs with respective values at the same time.
 
-**^Limit to MAX518/519, and is considered as error when invoked with MAX517 class.**
+**^Limited to MAX518/519, and is considered as error when invoked with MAX517 class.**
 
 ```C
 void powerOff(bool dac); // FOR MAX518/MAX519
@@ -88,7 +88,7 @@ void powerOffBoth(); // FOR MAX518/MAX519
 ```
 Power down both DACs at the same time.
 
-**^Limit to MAX518/519, and is considered as error when invoked with MAX517 class.**
+**^Limited to MAX518/519, and is considered as error when invoked with MAX517 class.**
 
 ```C
 void powerOn(bool dac); // FOR MAX518/MAX519
@@ -104,7 +104,7 @@ void powerOnBoth(); // FOR MAX518/MAX519
 ```
 Power on both DACs at the same time.
 
-**^Limit to MAX518/519, and is considered as error when invoked with MAX517 class.**
+**^Limited to MAX518/519, and is considered as error when invoked with MAX517 class.**
 
 ```C
 void resetDac(bool dac); // FOR MAX518/MAX519
@@ -122,4 +122,4 @@ void resetBothDac(); // FOR MAX518/MAX519
 ```
 Reset both outputs of DACs.
 
-**^Limit to MAX518/519, and is considered as error when invoked with MAX517 class.**
+**^Limited to MAX518/519, and is considered as error when invoked with MAX517 class.**
