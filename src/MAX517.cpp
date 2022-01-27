@@ -2,8 +2,7 @@
 
 #include "MAX51X.h"
 
-MAX517::MAX517(uint8_t adr, TwoWire &wire){
-  _wire = &wire;
+MAX517::MAX517(uint8_t adr){
   _adr = adr;
 }
 

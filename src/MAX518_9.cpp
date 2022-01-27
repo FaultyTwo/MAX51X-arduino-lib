@@ -3,12 +3,10 @@
 
 #include "MAX51X.h"
 
-MAX518::MAX518(uint8_t adr, TwoWire &wire = Wire){
+MAX518::MAX518(uint8_t adr){
   _adr = adr;
-  _wire = &wire;
 }
 
-MAX519::MAX519(uint8_t adr, TwoWire &wire = Wire){
+MAX519::MAX519(uint8_t adr){
   _adr = adr;
-  _wire = &wire;
 }

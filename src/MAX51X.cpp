@@ -1,6 +1,10 @@
 #include "MAX51X.h"
 // universal methods (exclude some of MAX517)
 
+void MAX51X::begin(TwoWire &wire){
+  _wire = &wire;
+}
+
 void MAX51X::setDac(bool dac, uint8_t data){
   _wire->beginTransmission(_adr);
   _wire->write(dac); //either 0x00 or 0x01
