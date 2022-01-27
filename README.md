@@ -32,10 +32,23 @@ To use this with the other I2C ports, you can simply type in the number of those
 #define I2C_SDA 33
 #define I2C_SCL 32
 
-MAX518 dvc518(0x2C,I2C_SDA,I2C_SCL,*clock rate*);
+TwoWire esp = TwoWire(0);
+MAX518 dvc518(0x2C);
+
+void setup(){
+  esp.begin(I2C_SDA, I2C_SCL, 1000000);
+  dvc518.begin(&esp);
+}
 ```
 
 # Methods
+```C
+void begin(TwoWire &wirePort = Wire);
+```
+Initiate the MAX51X library.
+
+Can be configured to use other I2C ports from a 'TwoWire' object. For default I2C port, just leave the parameter blank.
+
 ```C
 void setDac(bool dac, uint8_t data); // FOR MAX518/MAX519
 void setDac(uint8_t data); // FOR MAX517
@@ -46,7 +59,7 @@ For MAX518/MAX519:<br>
 logic 0 chooses DAC0, and logic 1 chooses DAC1.
 
 ```C
-void setBothDac(uint8_t dac0, uint8_t dac1) // FOR MAX518/MAX519
+void setBothDac(uint8_t dac0, uint8_t dac1); // FOR MAX518/MAX519
 ```
 Set both DAC outputs with respective values at the same time.
 
