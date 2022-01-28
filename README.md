@@ -12,10 +12,11 @@ MAX51X is a complete Arduino library for MAX517/MAX518/MAX519.
 - MAX519: Have 2 DACs, both reference voltage can be adjusted to each own DACs.
 
 ## Analog Output
-Analog output can be calculated by using the follow formula:
+Analog output can be calculated by using the following formula:
 
 ***+Vref \* (dac_content/256)*** <br>
-Where dac_content -> value between 0 - 255 (unsigned 1 byte range)
+Where **dac_content** -> value between 0 - 255 (unsigned 1 byte range)
+      **Vref** -> Reference Voltage
 
 ## How To Use The Library
 Include the library, then simply create an object according to each device numbers like this:
@@ -26,7 +27,7 @@ MAX518 dvc518(0x2C);
 MAX519 dvc519(0x27);
 ```
 
-To use this with the other I2C ports, you can simply type in the number of those pins like this:
+To use this library with other I2C ports, you can simply type in the number of those pins like this:
 ```C
 // ESP32
 #define I2C_SDA 33
