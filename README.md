@@ -27,7 +27,7 @@ MAX518 dvc518(0x2C);
 MAX519 dvc519(0x27);
 ```
 
-To use this library with other I2C ports, you can simply type in the number of those pins like this:
+To use this library with other I2C ports, you can simply create a TwoWire object then parse it into the 'begin' function:
 ```C
 // ESP32
 #define I2C_SDA 33
