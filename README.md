@@ -15,8 +15,7 @@ MAX51X is a complete Arduino library for MAX517/MAX518/MAX519.
 Analog output can be calculated by using the following formula:
 
 ***+Vref \* (dac_content/256)*** <br>
-Where **dac_content** -> value between 0 - 255 (unsigned 1 byte range)<br>
-      **Vref** -> Reference Voltage
+Where: <br>**dac_content** -> value between 0 - 255 (unsigned 1 byte range)<br>**+Vref** -> Reference Voltage
 
 ## How To Use The Library
 Include the library, then simply create an object according to each device numbers like this:
