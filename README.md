@@ -56,7 +56,7 @@ void setDac(uint8_t data); // FOR MAX517
 Set a DAC output.
 
 For MAX518/MAX519:<br>
-logic 0 chooses DAC0, and logic 1 chooses DAC1.
+Use logic 0 to choose DAC0, and use logic 1 to choose DAC1.
 
 ```C
 void setBothDac(uint8_t dac0, uint8_t dac1); // FOR MAX518/MAX519
@@ -72,7 +72,7 @@ void powerOff(); // FOR MAX517
 Power down a DAC.
 
 For MAX518/MAX519:<br>
-logic 0 chooses DAC0, and logic 1 chooses DAC1.
+Use logic 0 to choose DAC0, and use logic 1 to choose DAC1.
 
 ```C
 void powerOff(bool dac, uint8_t data); // FOR MAX518/MAX519
@@ -81,7 +81,7 @@ void powerOff(uint8_t data);; // FOR MAX517
 Power down a DAC, and set an analog output voltage when turned on.
 
 For MAX518/MAX519:<br>
-logic 0 chooses DAC0, and logic 1 chooses DAC1.
+Use logic 0 to choose DAC0, and use logic 1 to choose DAC1.
 
 ```C
 void powerOffBoth(); // FOR MAX518/MAX519
@@ -97,7 +97,7 @@ void powerOn(); // FOR MAX517
 Power on a DAC.
 
 For MAX518/MAX519:<br>
-logic 0 chooses DAC0, and logic 1 chooses DAC1.
+Use logic 0 to choose DAC0, and use logic 1 to choose DAC1.
 
 ```C
 void powerOnBoth(); // FOR MAX518/MAX519
@@ -113,7 +113,7 @@ void resetDac(); // FOR MAX517
 Reset an output of a DAC to zero.
 
 For MAX518/MAX519:<br>
-logic 0 chooses DAC0, and logic 1 chooses DAC1.
+Use logic 0 to choose DAC0, and use logic 1 to choose DAC1.
 
 **^Doesn't work with DAC1 in MAX518/MAX519 for a strange reason.**
 
