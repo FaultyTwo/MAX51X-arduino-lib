@@ -1,11 +1,11 @@
 {
-  "name": "MAX51X-arduino-lib",
+  "name": "MAX51X",
   "keywords": "i2c, dac, 8-bit",
   "description": "An Arduino library for MAX517/518/519, 8-bit DAC I2C with R2R",
   "repository":
   {
     "type": "git",
-    "url": "https://github.com/FaultyTwo/"
+    "url": "https://github.com/FaultyTwo/MAX51X-arduino-lib"
   },
   "authors": 
   [
@@ -16,7 +16,7 @@
       "maintainer": true
     }
   ],
-  "version": "1.0",
+  "version": "1.0.2",
   "frameworks": "arduino",
   "platforms": "*"
 }
