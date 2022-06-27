@@ -65,7 +65,7 @@ void setBothDac(uint8_t dac0, uint8_t dac1); // FOR MAX518/MAX519
 ```
 Set both DAC outputs at the same time.
 
-**^Limited to MAX518/519, and is considered as error when invoked with MAX517 class.**
+**^Limited to MAX518/519, and is considered as error when invoked with MAX517 class.**<br>
 **^DAC values shouldn't exceed 255, otherwise it will overflow.**
 
 ```C
