@@ -81,7 +81,7 @@ Use logic 0 to choose 'DAC0', and use logic 1 to choose 'DAC1'.
 void powerOff(bool dac, uint8_t data); // FOR MAX518/MAX519
 void powerOff(uint8_t data);; // FOR MAX517
 ```
-Power down a DAC, and set an analog output voltage when turned on.
+Power down a DAC, and set the analog output voltage when turned back on.
 
 For MAX518/MAX519:<br>
 Use logic 0 to choose 'DAC0', and use logic 1 to choose 'DAC1'.
