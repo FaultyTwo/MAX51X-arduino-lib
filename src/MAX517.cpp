@@ -6,6 +6,10 @@ MAX517::MAX517(uint8_t adr){
   _adr = adr;
 }
 
+void MAX51X::begin(TwoWire &wire){
+  _wire = &wire;
+}
+
 void MAX517::setDac(uint8_t data){
   _wire->beginTransmission(_adr);
   _wire->write(0x00); //517 only has one dac

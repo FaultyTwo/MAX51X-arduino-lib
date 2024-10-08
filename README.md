@@ -1,24 +1,24 @@
 # MAX51X
-An Arduino library for MAX517/MAX518/MAX519, 8-bit DAC I2C with R2R Outputs.
+Arduino library for MAX517/MAX518/MAX519, 8-bit DAC I2C with R2R Outputs.
 
 For technical details, please refer to the [datasheet.](https://datasheets.maximintegrated.com/en/ds/MAX517-MAX519.pdf)
 
 ## Overview
-MAX51X is a complete Arduino library for MAX517/MAX518/MAX519.
+MAX51X is  Arduino library for interacting with MAX517/MAX518/MAX519, I2C DAC with R/2R outputs.
 
-**Differences between each devices:**<br>
-- MAX517: Only has 1 DAC, reference voltage can be adjusted.
-- MAX518: Have 2 DACs, reference voltage is the same as supply voltage for the device.
-- MAX519: Have 2 DACs, both reference voltage can be adjusted to each own DACs.
+**Differences between devices:**<br>
+- **MAX517**: Only has 1 DAC, reference voltage can be adjusted.
+- **MAX518**: Have 2 DACs, reference voltage is the same as supply voltage for the device.
+- **MAX519**: Have 2 DACs, both reference voltage can be adjusted to each own DAC.
 
-## Analog Output
+## Analog Output Calculation
 Analog output can be calculated by using the following formula:
 
-Vout : Vref \* (DAC_CONTENT/256)
+Vout : **Vref \* (DAC_VALUE/256)**
 
 
 ## How To Use The Library
-Include the library, then simply create an object according to each device numbers like this:
+Include the library, then simply create an object according to each device address, like this:
 ```C
 #include <MAX51X.h>
 MAX517 dvc517(0x2F);
@@ -55,7 +55,7 @@ void setDac(uint8_t data); // FOR MAX517
 ```
 Set a DAC output.
 
-For MAX518/MAX519:<br>
+***For MAX518/MAX519:***<br>
 Use logic 0 to choose 'DAC0', and use logic 1 to choose 'DAC1'.
 
 **^DAC values shouldn't exceed 255, otherwise it will overflow.**
@@ -65,7 +65,6 @@ void setBothDac(uint8_t dac0, uint8_t dac1); // FOR MAX518/MAX519
 ```
 Set both DAC outputs at the same time.
 
-**^Limited to MAX518/519, and is considered as error when invoked with MAX517 class.**<br>
 **^DAC values shouldn't exceed 255, otherwise it will overflow.**
 
 ```C
@@ -74,16 +73,16 @@ void powerOff(); // FOR MAX517
 ```
 Power down a DAC.
 
-For MAX518/MAX519:<br>
+***For MAX518/MAX519:***<br>
 Use logic 0 to choose 'DAC0', and use logic 1 to choose 'DAC1'.
 
 ```C
 void powerOff(bool dac, uint8_t data); // FOR MAX518/MAX519
 void powerOff(uint8_t data);; // FOR MAX517
 ```
-Power down a DAC, and set the analog output voltage when turned back on.
+Power down a DAC and and set the output when power on.
 
-For MAX518/MAX519:<br>
+***For MAX518/MAX519:***<br>
 Use logic 0 to choose 'DAC0', and use logic 1 to choose 'DAC1'.
 
 **^DAC values shouldn't exceed 255, otherwise it will overflow.**
@@ -91,9 +90,7 @@ Use logic 0 to choose 'DAC0', and use logic 1 to choose 'DAC1'.
 ```C
 void powerOffBoth(); // FOR MAX518/MAX519
 ```
-Power down both DACs at the same time.
-
-**^Limited to MAX518/519, and is considered as error when invoked with MAX517 class.**
+Power down both DACs at the "same" time.
 
 ```C
 void powerOn(bool dac); // FOR MAX518/MAX519
@@ -101,15 +98,13 @@ void powerOn(); // FOR MAX517
 ```
 Power on a DAC.
 
-For MAX518/MAX519:<br>
+***For MAX518/MAX519:***<br>
 Use logic 0 to choose 'DAC0', and use logic 1 to choose 'DAC1'.
 
 ```C
 void powerOnBoth(); // FOR MAX518/MAX519
 ```
-Power on both DACs at the same time.
-
-**^Limited to MAX518/519, and is considered as error when invoked with MAX517 class.**
+Power on both DACs at the "same" time.
 
 ```C
 void resetDac(bool dac); // FOR MAX518/MAX519
@@ -117,14 +112,10 @@ void resetDac(); // FOR MAX517
 ```
 Reset an output of a 'DAC' to zero.
 
-For MAX518/MAX519:<br>
+***For MAX518/MAX519:***<br>
 Use logic 0 to choose 'DAC0', and use logic 1 to choose 'DAC1'.
-
-**^Doesn't work with DAC1 in MAX518/MAX519 for a strange reason.**
 
 ```C
 void resetBothDac(); // FOR MAX518/MAX519
 ```
 Reset both outputs of DACs to zero.
-
-**^Limited to MAX518/519, and is considered as error when invoked with MAX517 class.**

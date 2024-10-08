@@ -24,7 +24,6 @@ void MAX51X::setBothDac(uint8_t dac0, uint8_t dac1){
 void MAX51X::resetDac(bool dac){
   _wire->beginTransmission(_adr);
   _wire->write(0x10 | dac);
-  // TODO: doesn't work with dac1 in MAX518/519
   _wire->endTransmission();
 }
 
@@ -49,7 +48,7 @@ void MAX51X::powerOff(bool dac, uint8_t data){
   _wire->endTransmission();
 }
 
-void MAX51X::powerOffBoth(){ //this is stupid
+void MAX51X::powerOffBoth(){
   powerOff(0); powerOff(1);
 }
 
@@ -59,6 +58,6 @@ void MAX51X::powerOn(bool dac){
   _wire->endTransmission();
 }
 
-void MAX51X::powerOnBoth(){ //this is also stupid
+void MAX51X::powerOnBoth(){
   powerOn(0); powerOn(1);
 }
